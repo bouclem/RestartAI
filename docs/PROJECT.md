@@ -37,6 +37,16 @@ Brute-force comparison of all neuron variants by number of computable 2-input
 Boolean functions (out of 16). Generates a matplotlib bar chart with delta
 annotations showing % improvement vs parent variant.
 
+### v3 — Adaptive Threshold Neuron (`src/adaptive_threshold_neuron/`)
+
+First neuron that can learn. Threshold adapts based on firing history.
+
+- **`neuron.py`** — `AdaptiveThresholdNeuron` class with homeostatic threshold adaptation
+- **`test_neuron.py`** — 14 unit tests covering adaptation, equilibrium, veto, reset, edge cases
+
+Adaptation rule: fires → threshold +1 (harder), doesn't fire → threshold -1 (min 0).
+The threshold drift during evaluation enables computing all 16 Boolean functions.
+
 ## Design
 
 - Start from the simplest possible unit: a single binary threshold neuron

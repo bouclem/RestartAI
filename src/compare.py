@@ -15,7 +15,7 @@ The comparison shows each variant as a percentage of the base (MP
 neuron = 100%), with the delta vs the parent variant.
 """
 
-from itertools import combinations, product
+from itertools import combinations, permutations, product
 from typing import Dict, List, Set, Tuple
 
 import matplotlib.pyplot as plt
@@ -23,6 +23,7 @@ import numpy as np
 
 from src.mcculloch_pitts_neuron.neuron import Neuron
 from src.multi_threshold_neuron.neuron import MultiThresholdNeuron
+from src.adaptive_threshold_neuron.neuron import AdaptiveThresholdNeuron
 
 # All 16 Boolean functions of 2 variables.
 # Each function is a tuple of outputs for inputs (0,0), (0,1), (1,0), (1,1).
@@ -133,18 +134,60 @@ def enumerate_mt_functions() -> Set[Tuple[int, ...]]:
     return computable
 
 
+def enumerate_at_functions() -> Set[Tuple[int, ...]]:
+    """Brute-force all Boolean functions a single adaptive threshold neuron can compute.
+
+    The adaptive neuron's threshold changes after each fire() call, so the
+    order of inputs matters. We try all permutations of the 4 input pairs
+    and all initial thresholds, collecting every function that can appear.
+    """
+    computable: Set[Tuple[int, ...]] = set()
+
+    for bias in BIAS_OPTIONS:
+        for x1_role in ROLES:
+            for x2_role in ROLES:
+                for init_theta in range(7):
+                    for perm in permutations(INPUT_PAIRS):
+                        try:
+                            n = AdaptiveThresholdNeuron(threshold=init_theta)
+                            if bias > 0:
+                                n.add_excitatory(bias)
+                            if x1_role > 0:
+                                n.add_excitatory(x1_role)
+                            if x2_role > 0:
+                                n.add_excitatory(x2_role)
+                            if x1_role == -1:
+                                n.add_inhibitory()
+                            if x2_role == -1:
+                                n.add_inhibitory()
+
+                            outputs = tuple(
+                                n.fire(_build_inputs(bias, x1_role, x2_role, x1, x2))
+                                for x1, x2 in perm
+                            )
+                            computable.add(outputs)
+                        except (ValueError, IndexError):
+                            continue
+
+    return computable
+
+
 def compare() -> Dict[str, dict]:
     """Run the comparison and return results."""
     mp_funcs = enumerate_mp_functions()
     mt_funcs = enumerate_mt_functions()
+    at_funcs = enumerate_at_functions()
 
     mp_count = len(mp_funcs & ALL_FUNCTIONS)
     mt_count = len(mt_funcs & ALL_FUNCTIONS)
+    at_count = len(at_funcs & ALL_FUNCTIONS)
 
     # MP is the base (100%)
     mp_pct = 100.0
     mt_pct = (mt_count / mp_count) * 100.0 if mp_count > 0 else 0.0
     mt_delta = mt_pct - mp_pct
+    at_pct = (at_count / mp_count) * 100.0 if mp_count > 0 else 0.0
+    at_delta = at_pct - mp_pct
 
     results = {
         "McCulloch-Pitts Neuron": {
@@ -159,6 +202,13 @@ def compare() -> Dict[str, dict]:
             "total": TOTAL_FUNCTIONS,
             "pct": mt_pct,
             "delta": mt_delta,
+            "parent": "McCulloch-Pitts Neuron",
+        },
+        "Adaptive Threshold Neuron": {
+            "count": at_count,
+            "total": TOTAL_FUNCTIONS,
+            "pct": at_pct,
+            "delta": at_delta,
             "parent": "McCulloch-Pitts Neuron",
         },
     }

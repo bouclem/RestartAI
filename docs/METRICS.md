@@ -46,3 +46,18 @@ Project metrics tracked per evolution iteration. Compare to previous iteration a
 | Benchmarks run    | 1     |
 | Quality score     | —     |
 | Tech debt         | 0     |
+
+---
+
+## Iteration 3 — Adaptive Threshold Neuron
+
+| Metric            | Value |
+|-------------------|-------|
+| Source files      | 10    |
+| Tests             | 48    |
+| Dependencies      | 2     |
+| LOC               | ~600  |
+| Variants generated| 2     |
+| Benchmarks run    | 1     |
+| Quality score     | —     |
+| Tech debt         | 0     |

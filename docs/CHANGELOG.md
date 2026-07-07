@@ -44,3 +44,19 @@ This is a history of what we did and discovered, not a changelog of version upda
   - Multi-threshold neuron: 15/16 (+36.4% vs MP)
   - Matplotlib bar chart with delta annotations
 - All 34 tests pass (20 MP + 14 multi-threshold)
+
+---
+
+## Iteration 3 — Adaptive Threshold Neuron
+
+- Added adaptive threshold neuron in `src/adaptive_threshold_neuron/`
+  - First neuron that can learn — threshold adapts based on firing history
+  - Homeostatic rule: fires → threshold +1 (harder), doesn't fire → threshold -1 (min 0)
+  - Inhibitory veto preserved (same as MP)
+  - Reset method to restore initial threshold
+  - Reaches equilibrium oscillation with constant input
+- Updated `src/compare.py` to include adaptive threshold neuron
+  - Evaluates all input permutations since threshold adapts between calls
+  - Adaptive threshold neuron: 16/16 functions (+45.5% vs MP)
+  - The threshold drift during evaluation enables computing all 16 Boolean functions
+- All 48 tests pass (20 MP + 14 multi-threshold + 14 adaptive)
