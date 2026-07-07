@@ -4,7 +4,7 @@ This is a history of what we did and discovered, not a changelog of version upda
 
 ---
 
-## 2026-07-07
+## Iteration 0 — Setup
 
 - Project created
 - Decided to restart AI research from scratch, as if post-1943 AI research never existed
