@@ -8,7 +8,7 @@ import matplotlib.pyplot as plt
 import matplotlib.colors as mcolors
 import numpy as np
 
-from src.v1.neuron import Neuron
+from src.mcculloch_pitts_neuron.neuron import Neuron
 
 
 def _build_and() -> Neuron:

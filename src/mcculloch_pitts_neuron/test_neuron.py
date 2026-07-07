@@ -2,7 +2,7 @@
 
 import pytest
 
-from src.v1.neuron import Neuron
+from src.mcculloch_pitts_neuron.neuron import Neuron
 
 
 # --- AND gate: threshold=2, two excitatory inputs (weight 1 each) ---
