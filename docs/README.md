@@ -1,42 +1,37 @@
-# Evolutionary AI Research
+# RestartAI
 
 ## About
 
-This project is an exploration of artificial intelligence from its earliest foundations.
+This project restarts artificial intelligence research from scratch.
 
-The goal is not to recreate modern AI architectures like Transformers, but to restart the research path from the first artificial neuron concepts and explore a different evolution of AI.
+We pretend that everything after 1943 never happened. No backpropagation, no neural networks as we know them, no deep learning, no Transformers. None of it exists yet.
 
-## Idea
-
-The project starts from simple artificial neuron models and gradually evolves through experiments.
-
-Instead of following the current AI path, the objective is to explore alternative directions:
-
-- Different architectures
-- Different learning methods
-- Different ways for AI systems to improve
-- New ideas discovered through evolution
+We start from the very first idea: the McCulloch-Pitts neuron, published in 1943 in the paper "A Logical Calculus of the Ideas Immanent in Nervous Activity." This is our base. From here, we explore and build forward on our own.
 
 ## Starting Point
 
-The first experiments will begin with simple artificial neurons inspired by early AI research.
+The first thing we work on is the Pitts neuron — a simple binary threshold neuron inspired by the 1943 paper.
 
-The project will initially be built in C++ and run on CPU to keep the system simple and fully controllable.
+From there, everything else is open. We discover and build as we go.
 
-## Evolution Workflow
+## Language
 
-The project will use an evolution workflow to test and improve ideas over time.
+The project is built in Python to keep things simple and accessible.
 
-The system will experiment with different designs, evaluate results, and continue exploring new possibilities.
+## Documentation
+
+Everything is documented:
+
+- **README.md** — what the project is
+- **PROJECT.md** — architecture, design, and direction
+- **CHANGELOG.md** — history of what we did and discovered (not version updates)
+- **LESSONS.md** — mistakes, patterns, and insights learned along the way
+- **METRICS.md** — project metrics tracked over time
 
 ## Goal
 
-The goal is not to build a bigger existing AI model.
-
-The goal is to explore:
-
-"What could AI have become if research had taken a different path?"
+Explore what AI could have become if research had taken a completely different path after 1943.
 
 ## Status
 
-🚧 Early research phase
+🚧 Early research phase — starting from the Pitts neuron
