@@ -45,6 +45,9 @@ htmlcov/
 # Jupyter
 .ipynb_checkpoints/
 
+# Generated plots
+src/v1/gates.png
+
 # Logs
 *.log
 logs/
