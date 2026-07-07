@@ -26,3 +26,21 @@ This is a history of what we did and discovered, not a changelog of version upda
 - Added `requirements.txt` with numpy and matplotlib
 - Added `visualize.py` — matplotlib plot of AND, OR, NOT gate decision regions
 - All 20 tests pass
+
+---
+
+## Iteration 2 — Multi-Threshold Neuron & Comparison
+
+- Renamed `src/v1/` to `src/mcculloch_pitts_neuron/`
+- Added multi-threshold neuron in `src/multi_threshold_neuron/`
+  - Multiple thresholds θ₁ ≤ θ₂ ≤ ... ≤ θₙ — output is graded (0 to n)
+  - Counts how many thresholds the weighted sum meets
+  - Can compute XOR with a single neuron (MP neuron cannot)
+  - Inhibitory veto preserved (same as MP)
+  - With a single threshold, reduces exactly to the MP neuron
+- Added `src/compare.py` — brute-force comparison of all neuron variants
+  - Metric: number of 2-input Boolean functions computable by a single neuron (out of 16)
+  - MP neuron: 11/16 (base, 100%)
+  - Multi-threshold neuron: 15/16 (+36.4% vs MP)
+  - Matplotlib bar chart with delta annotations
+- All 34 tests pass (20 MP + 14 multi-threshold)

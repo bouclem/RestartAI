@@ -31,3 +31,18 @@ Project metrics tracked per evolution iteration. Compare to previous iteration a
 | Benchmarks run    | 0     |
 | Quality score     | —     |
 | Tech debt         | 0     |
+
+---
+
+## Iteration 2 — Multi-Threshold Neuron & Comparison
+
+| Metric            | Value |
+|-------------------|-------|
+| Source files      | 7     |
+| Tests             | 34    |
+| Dependencies      | 2     |
+| LOC               | ~450  |
+| Variants generated| 1     |
+| Benchmarks run    | 1     |
+| Quality score     | —     |
+| Tech debt         | 0     |

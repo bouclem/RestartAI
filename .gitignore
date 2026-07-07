@@ -47,6 +47,8 @@ htmlcov/
 
 # Generated plots
 src/v1/gates.png
+src/mcculloch_pitts_neuron/gates.png
+src/comparison.png
 
 # Logs
 *.log

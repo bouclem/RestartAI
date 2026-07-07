@@ -6,7 +6,7 @@ RestartAI is a project that restarts artificial intelligence research from the y
 
 ## Architecture
 
-### v1 — McCulloch-Pitts Neuron (`src/v1/`)
+### v1 — McCulloch-Pitts Neuron (`src/mcculloch_pitts_neuron/`)
 
 The base unit: a single binary threshold neuron as described in the 1943 paper.
 
@@ -20,6 +20,22 @@ Design follows the original paper:
 - Inhibitory synapses are an absolute veto (any active → no firing)
 - No learning — static weights and connections
 - Discrete time — output at t+1 depends on inputs at t
+
+### v2 — Multi-Threshold Neuron (`src/multi_threshold_neuron/`)
+
+Generalization of the MP neuron with multiple thresholds and graded output.
+
+- **`neuron.py`** — `MultiThresholdNeuron` class with multiple thresholds, graded output (0..n)
+- **`test_neuron.py`** — 14 unit tests covering graded output, XOR, veto, threshold, edge cases
+
+Key advantage: a single multi-threshold neuron can compute non-monotonic functions
+like XOR, which is impossible with a single MP neuron.
+
+### Comparison (`src/compare.py`)
+
+Brute-force comparison of all neuron variants by number of computable 2-input
+Boolean functions (out of 16). Generates a matplotlib bar chart with delta
+annotations showing % improvement vs parent variant.
 
 ## Design
 
